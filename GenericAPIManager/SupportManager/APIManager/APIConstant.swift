@@ -13,18 +13,6 @@ public enum HTTPMethod: String {
     case GET, POST, PUT, DELETE
 }
 
-// MARK: - NetworkConfiguration
-
-public struct APIConfiguration {
-    public let baseURL: String
-    public let defaultHeaders: [String: String]
-    
-    public init(baseURL: String, defaultHeaders: [String: String] = [:]) {
-        self.baseURL = baseURL
-        self.defaultHeaders = defaultHeaders
-    }
-}
-
 // MARK: - RequestTarget
 
 public protocol APIRequestData {

@@ -8,8 +8,37 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    @StateObject private var viewModel = HomeViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            Group {
+                if viewModel.isLoading {
+                    ProgressView("Loading Products...")
+                } else if let error = viewModel.errorMessage {
+                    VStack {
+                        Text("❌ \(error)")
+                            .foregroundColor(.red)
+                            .multilineTextAlignment(.center)
+                        Button("Retry") {
+                            Task { await viewModel.fetchProducts() }
+                        }
+                        .padding(.top)
+                    }
+                } else {
+                    List(viewModel.homeData, id: \.id) { product in
+                        VStack(alignment: .leading) {
+                            Text(product.name ?? "ABC")
+                        }
+                    }
+                }
+            }
+            .navigationTitle("Products")
+        }
+        .task {
+            await viewModel.fetchProducts()
+        }
     }
 }
 

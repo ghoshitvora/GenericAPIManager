@@ -16,7 +16,6 @@ public protocol APIManagerProtocol {
 public final class APIManager: APIManagerProtocol {
     
     // MARK: Properties
-    private let config: APIConfiguration
     private let cache: NetworkCache
     private let urlSession: URLSession
     
@@ -24,10 +23,7 @@ public final class APIManager: APIManagerProtocol {
     public var retryDelay: TimeInterval = 1.0
     
     // MARK: Init
-    public init(config: APIConfiguration,
-                cache: NetworkCache = NetworkCache(),
-                urlSession: URLSession = .shared) {
-        self.config = config
+    public init(cache: NetworkCache = NetworkCache(), urlSession: URLSession = .shared) {
         self.cache = cache
         self.urlSession = urlSession
     }
@@ -35,7 +31,7 @@ public final class APIManager: APIManagerProtocol {
     // MARK: - Send Request
     
     public func sendRequest<T: Decodable>(_ target: APIRequestData) async throws -> T {
-        let request = target.sendURLRequest(using: config)
+        let request = target.sendURLRequest()
         let cacheKey = request.url?.absoluteString ?? UUID().uuidString
         
         // 1️⃣ Try cache
@@ -84,12 +80,11 @@ public extension APIRequestData {
     var parameters: [String: Any]? { nil }
     var multipartFormData: [(name: String, filename: String, data: Data)]? { nil }
     
-    func sendURLRequest(using config: APIConfiguration) -> URLRequest {
-        guard var components = URLComponents(string: config.baseURL) else {
-            fatalError("❌ Invalid base URL: \(config.baseURL)")
-        }
+    func sendURLRequest() -> URLRequest {
         
-        components.path = path
+        guard var components = URLComponents(string: path) else {
+            fatalError("❌ Invalid full URL: \(path)")
+        }
         
         // Add query for GET
         if method == .GET, let parameters = parameters {
@@ -105,10 +100,11 @@ public extension APIRequestData {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         
-        // Merge global + local headers
-        var allHeaders = config.defaultHeaders
-        headers?.forEach { allHeaders[$0.key] = $0.value }
-        allHeaders.forEach { request.setValue($0.value, forHTTPHeaderField: $0.key) }
+        if let header = headers {
+            for (key, value) in header {
+                request.setValue(value, forHTTPHeaderField: key)
+            }
+        }
         
         // Handle body (non-GET)
         if method != .GET, let parameters = parameters {

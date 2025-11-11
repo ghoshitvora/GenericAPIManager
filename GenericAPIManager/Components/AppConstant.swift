@@ -18,27 +18,17 @@ struct AppConstants {
     static var BASE_URL: String {
         switch environment {
         case .production:
-            return "https://apigenerator.dronahq.com/api/wiyElg3t/"
+            return "https://api.restful-api.dev/"
         case .development:
-            return "https://apigenerator.dronahq.com/api/wiyElg3t/"
+            return "https://api.restful-api.dev/"
         case .staging:
-            return "https://apigenerator.dronahq.com/api/wiyElg3t/"
+            return "https://api.restful-api.dev/"
         }
     }
 }
 
-struct AlertMessage: Identifiable {
-    let id = UUID()
-    let title: String
-    let message: String
-}
-
 struct ApiURLS {
-    static var getUsers: String {
-        return "\(AppConstants.BASE_URL)users"
-    }
-    
-    static var registerUsers: String {
-        return "\(AppConstants.BASE_URL)users"
+    static var objectData: String {
+        return "\(AppConstants.BASE_URL)objects"
     }
 }
