@@ -12,8 +12,3 @@ enum ApiEnvironment: String {
     case staging = "Staging"
     case development = "Development"
 }
-
-enum ApiHttpMethods: String {
-    case GET = "GET"
-    case POST = "POST"
-}

@@ -15,6 +15,7 @@
 		7310D23E2EC311D800558361 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7310D23D2EC311D400558361 /* HomeModel.swift */; };
 		7310D2422EC3123C00558361 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7310D2412EC3123C00558361 /* HomeView.swift */; };
 		7310D2452EC3127000558361 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7310D2442EC3126B00558361 /* HomeViewModel.swift */; };
+		7310D2472EC3131F00558361 /* APIConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7310D2462EC3130E00558361 /* APIConstant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		7310D23D2EC311D400558361 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		7310D2412EC3123C00558361 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		7310D2442EC3126B00558361 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		7310D2462EC3130E00558361 /* APIConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		7310D2312EC306BA00558361 /* APIManager */ = {
 			isa = PBXGroup;
 			children = (
+				7310D2462EC3130E00558361 /* APIConstant.swift */,
 				7310D2322EC306D100558361 /* APIManager.swift */,
 			);
 			path = APIManager;
@@ -210,6 +213,7 @@
 				7310D2332EC306D700558361 /* APIManager.swift in Sources */,
 				7310D2422EC3123C00558361 /* HomeView.swift in Sources */,
 				7310D2452EC3127000558361 /* HomeViewModel.swift in Sources */,
+				7310D2472EC3131F00558361 /* APIConstant.swift in Sources */,
 				7310D23E2EC311D800558361 /* HomeModel.swift in Sources */,
 				7310D2382EC3116A00558361 /* Enums.swift in Sources */,
 				7310D22F2EC3047700558361 /* GenericAPIManagerApp.swift in Sources */,
