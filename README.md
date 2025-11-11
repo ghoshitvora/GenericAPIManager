@@ -4,11 +4,17 @@ A lightweight, concurrency-powered networking layer for Swift. Designed for scal
 ## Features
 
 ✅ Unified API request builder using RequestTarget
+
 ✅ Supports all HTTP methods (GET, POST, PUT, DELETE)
+
 ✅ Configurable base URL and default headers
+
 ✅ Type-safe generic decoding
+
 ✅ Swift Concurrency & Sendable safe (Swift 6 ready)
+
 ✅ Works with Dependency Injection or EnvironmentObject
+
 ✅ Easily testable and mockable
 
 ## Usage
@@ -53,7 +59,6 @@ class HomeViewModel: ObservableObject {
         
         isLoading = false
     }
-    
 }
 
 ## License
